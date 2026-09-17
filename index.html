@@ -11,7 +11,7 @@
             --bg-dark: #09090b;
             --card-bg: #18181b;
             --accent-pink: #f43f5e;
-            --accent-glow: rgba(244, 63, 94, 0.5);
+            --accent-glow: rgba(244, 63, 94, 0.4);
             --text-light: #fafafa;
             --text-muted: #a1a1aa;
         }
@@ -43,19 +43,21 @@
         /* Profile Header */
         .avatar-container {
             position: relative;
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             margin: 0 auto 12px;
+            border-radius: 50%;
+            overflow: hidden; /* Prevent blurred edges from showing outside */
+            border: 2px solid #3f3f46;
         }
 
         .avatar {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #3f3f46; /* Subtle border instead of bright pink to look real */
-            padding: 2px;
-            filter: brightness(0.9);
+            /* ব্লার এবং ডার্ক ইফেক্ট দেওয়া হয়েছে যাতে ফেস বোঝা না যায় */
+            filter: blur(4px) brightness(0.8);
+            transform: scale(1.1); /* ব্লারের কারণে সাইডে যেন গ্যাপ না থাকে */
         }
 
         .status-badge {
@@ -68,6 +70,7 @@
             border-radius: 50%;
             border: 3px solid var(--card-bg);
             box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+            z-index: 2;
         }
 
         .name {
@@ -121,7 +124,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .id-code {
@@ -148,29 +151,30 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Main Call Button */
+        /* Main Call Button - Restored Awesome Design */
         .cta-btn {
             width: 100%;
-            background: var(--accent-pink);
+            background: linear-gradient(90deg, #f43f5e, #fb923c);
             color: #fff;
             border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 800;
+            padding: 18px;
+            border-radius: 40px;
+            font-size: 17px;
+            font-weight: 900;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px var(--accent-glow);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: all 0.2s;
+            transition: transform 0.2s;
+            animation: float 3s ease-in-out infinite;
         }
 
         .cta-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
         .secure-note {
@@ -182,6 +186,8 @@
             justify-content: center;
             gap: 5px;
         }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     </style>
 </head>
 <body>
@@ -190,17 +196,18 @@
         
         <!-- Profile Section -->
         <div class="avatar-container">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Profile" class="avatar">
+            <!-- আপনার দেওয়া ছবি এখানে যুক্ত করা হয়েছে -->
+            <img src="https://github.com/ettieshulma5757-max/vdfvd/blob/main/2430769_20260721230659_1.jpg?raw=true" alt="Profile" class="avatar">
             <div class="status-badge"></div>
         </div>
 
         <div class="name">Secret_Profile 🔒</div>
         <div class="username">@hidden_user</div>
 
-        <!-- Realistic Bio -->
+        <!-- Awesome Blended Bio -->
         <div class="bio-text">
-            Hey! Please don't ask for my WhatsApp or phone number. I've had too many scammers add me, so I don't give it out anymore. 🚫<br><br>
-            If you actually want to chat or see me on a <span>Private Video Call</span>, I only use this secure personal site. Just copy my user ID and search for me there so I know you're a real person.
+            Hey! Please don't ask for my WhatsApp or phone number. I don't give it to strangers! 🚫<br><br>
+            If you actually want to chat or see me on a <span>Private Video Call</span>, I only use this secure personal site. Just copy my user ID below and search for me there! 💦
         </div>
 
         <!-- The ID Search Instruction -->
@@ -211,7 +218,7 @@
             <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy</button>
         </div>
 
-        <!-- The Direct CPA Link -->
+        <!-- The Direct CPA Link Button (Restored Design) -->
         <button class="cta-btn" onclick="openSite()">
             🔗 Go To My Private Site
         </button>
@@ -236,7 +243,7 @@
                 
                 if (navigator.vibrate) navigator.vibrate(50);
                 
-                // ৩ সেকেন্ড পর আবার আগের মতো হয়ে যাবে (রিয়েলিস্টিক ফিল)
+                // ৩ সেকেন্ড পর আবার আগের মতো হয়ে যাবে
                 setTimeout(() => {
                     btn.innerText = "Copy";
                     btn.style.background = "rgba(255, 255, 255, 0.1)";
@@ -247,7 +254,6 @@
         // Redirect Function
         function openSite() {
             if (navigator.vibrate) navigator.vibrate(80);
-            // বাটনে ক্লিক করলে সরাসরি আপনার লিংকে চলে যাবে
             window.location.href = cpaLink;
         }
     </script>
