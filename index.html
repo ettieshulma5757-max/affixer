@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>My Private Profile 🤫</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <title>Private Profile 🤫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #09090b;
@@ -26,26 +26,26 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            background-image: radial-gradient(circle at 50% 0%, rgba(244, 63, 94, 0.15), transparent 50%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(244, 63, 94, 0.12), transparent 60%);
         }
 
         .profile-card {
             width: 100%;
             max-width: 400px;
             background: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px 22px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
         }
 
         /* Profile Header */
         .avatar-container {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 12px;
         }
 
         .avatar {
@@ -53,146 +53,135 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-pink);
-            padding: 3px;
+            border: 2px solid #3f3f46; /* Subtle border instead of bright pink to look real */
+            padding: 2px;
+            filter: brightness(0.9);
         }
 
         .status-badge {
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: -2px;
+            right: 0;
             background: #10b981;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 2px solid var(--card-bg);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-            animation: pulse-green 2s infinite;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
         }
 
         .name {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 3px;
+            color: #f4f4f5;
         }
 
-        .verified {
-            width: 18px;
-            height: 18px;
-            background: #3b82f6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
+        .username {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        /* Bio Strategy */
+        /* Bio Strategy - Ultra Realistic */
         .bio-text {
-            font-size: 15px;
+            font-size: 14.5px;
             color: #d4d4d8;
             line-height: 1.6;
-            margin: 20px 0;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
+            margin: 0 0 25px 0;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
             border-radius: 12px;
             text-align: left;
-            border-left: 4px solid var(--accent-pink);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .bio-text span {
             color: var(--accent-pink);
-            font-weight: 800;
+            font-weight: 700;
         }
 
         /* The Mastermind ID Box */
         .instruction-title {
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: left;
         }
 
         .id-box {
             background: #000;
-            border: 1px dashed var(--accent-pink);
-            padding: 12px 15px;
+            border: 1px solid #3f3f46;
+            padding: 12px 16px;
             border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .id-text {
-            font-size: 15px;
-            color: var(--text-muted);
-            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .id-code {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 900;
             color: #fff;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            font-family: monospace;
         }
 
         .copy-btn {
-            background: rgba(244, 63, 94, 0.15);
-            color: var(--accent-pink);
-            border: 1px solid var(--accent-pink);
-            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
             border-radius: 8px;
             font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
             transition: 0.2s;
-            text-transform: uppercase;
         }
 
-        .copy-btn:active {
-            transform: scale(0.9);
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* Main Call Button */
         .cta-btn {
             width: 100%;
-            background: linear-gradient(90deg, #f43f5e, #fb923c);
+            background: var(--accent-pink);
             color: #fff;
             border: none;
-            padding: 18px;
-            border-radius: 40px;
-            font-size: 17px;
-            font-weight: 900;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 800;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px var(--accent-glow);
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: transform 0.2s;
-            animation: float 3s ease-in-out infinite;
+            transition: all 0.2s;
         }
 
         .cta-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .secure-note {
+            font-size: 12px;
+            color: #71717a;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
     </style>
 </head>
 <body>
@@ -201,59 +190,64 @@
         
         <!-- Profile Section -->
         <div class="avatar-container">
-            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80" alt="Girl" class="avatar">
-            <div class="status-badge">Online Now</div>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Profile" class="avatar">
+            <div class="status-badge"></div>
         </div>
 
-        <div class="name">
-            Jessica_69
-            <div class="verified">✓</div>
-        </div>
+        <div class="name">Secret_Profile 🔒</div>
+        <div class="username">@hidden_user</div>
 
-        <!-- The Psychological Trap Bio -->
+        <!-- Realistic Bio -->
         <div class="bio-text">
-            Hey! Please don't ask for my WhatsApp or phone number. I don't give it to strangers! 🚫<br><br>
-            If you want to talk to me or see me on a <span>Private Video Call</span>, I am active 24/7 on my private chat app. I am alone in my room and waiting right now! 💦
+            Hey! Please don't ask for my WhatsApp or phone number. I've had too many scammers add me, so I don't give it out anymore. 🚫<br><br>
+            If you actually want to chat or see me on a <span>Private Video Call</span>, I only use this secure personal site. Just copy my user ID and search for me there so I know you're a real person.
         </div>
 
         <!-- The ID Search Instruction -->
-        <div class="instruction-title">👇 How to call me directly 👇</div>
+        <div class="instruction-title">My Private Search ID:</div>
         
         <div class="id-box">
-            <div class="id-text">Search My ID:<br><span class="id-code" id="secretId">JESS_VIP</span></div>
-            <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy ID</button>
+            <div class="id-code" id="secretId">UID-849302</div>
+            <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy</button>
         </div>
 
         <!-- The Direct CPA Link -->
-        <button class="cta-btn" onclick="openApp()">
-            📞 Open App & Call Me
+        <button class="cta-btn" onclick="openSite()">
+            🔗 Go To My Private Site
         </button>
+
+        <div class="secure-note">
+            🔒 100% Secure & Private Connection
+        </div>
 
     </div>
 
     <script>
-        // আপনার নতুন CPA লিংক
+        // আপনার CPA লিংক
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        // ID Copy Function (Trust Builder)
+        // ID Copy Function 
         function copyMyId() {
             const idText = document.getElementById("secretId").innerText;
             navigator.clipboard.writeText(idText).then(() => {
                 const btn = document.getElementById("copyBtn");
-                btn.innerText = "COPIED! ✔";
-                btn.style.background = "#10b981";
-                btn.style.color = "#fff";
-                btn.style.borderColor = "#10b981";
+                btn.innerText = "Copied! ✔";
+                btn.style.background = "#10b981"; // Green background on success
                 
-                // মোবাইলের জন্য হালকা ভাইব্রেশন
                 if (navigator.vibrate) navigator.vibrate(50);
+                
+                // ৩ সেকেন্ড পর আবার আগের মতো হয়ে যাবে (রিয়েলিস্টিক ফিল)
+                setTimeout(() => {
+                    btn.innerText = "Copy";
+                    btn.style.background = "rgba(255, 255, 255, 0.1)";
+                }, 3000);
             });
         }
 
         // Redirect Function
-        function openApp() {
-            if (navigator.vibrate) navigator.vibrate(100);
-            // বাটনে চাপ দিলেই সরাসরি অফার লিংকে চলে যাবে
+        function openSite() {
+            if (navigator.vibrate) navigator.vibrate(80);
+            // বাটনে ক্লিক করলে সরাসরি আপনার লিংকে চলে যাবে
             window.location.href = cpaLink;
         }
     </script>
