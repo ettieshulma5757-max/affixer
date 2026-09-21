@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>Private Profile 🤫</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>Encrypted Portal 🔒</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #09090b;
-            --card-bg: #18181b;
+            --card-bg: #121214;
             --accent-pink: #f43f5e;
-            --accent-glow: rgba(244, 63, 94, 0.4);
+            --accent-glow: rgba(244, 63, 94, 0.3);
             --text-light: #fafafa;
             --text-muted: #a1a1aa;
+            --warning: #fbbf24;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
@@ -26,140 +27,170 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            background-image: radial-gradient(circle at 50% 0%, rgba(244, 63, 94, 0.12), transparent 60%);
+            background-image: 
+                linear-gradient(rgba(244, 63, 94, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 63, 94, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
         .profile-card {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             background: var(--card-bg);
             border-radius: 20px;
             padding: 30px 22px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
+            position: relative;
+        }
+
+        /* Security Badge Top */
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .security-dot {
+            width: 6px; height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
         }
 
         /* Profile Header */
         .avatar-container {
             position: relative;
-            width: 95px;
-            height: 95px;
-            margin: 0 auto 12px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
             border-radius: 50%;
-            overflow: hidden; /* Prevent blurred edges from showing outside */
-            border: 2px solid #3f3f46;
+            overflow: hidden;
+            border: 2px dashed #3f3f46;
+            padding: 4px;
         }
 
         .avatar {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            /* ব্লার এবং ডার্ক ইফেক্ট দেওয়া হয়েছে যাতে ফেস বোঝা না যায় */
-            filter: blur(4px) brightness(0.8);
-            transform: scale(1.1); /* ব্লারের কারণে সাইডে যেন গ্যাপ না থাকে */
-        }
-
-        .status-badge {
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            background: #10b981;
-            width: 18px;
-            height: 18px;
             border-radius: 50%;
-            border: 3px solid var(--card-bg);
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
-            z-index: 2;
+            object-fit: cover;
+            filter: blur(4px) brightness(0.8) contrast(1.1);
+            transform: scale(1.1); 
         }
 
         .name {
             font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 3px;
-            color: #f4f4f5;
+            font-weight: 900;
+            margin-bottom: 2px;
+            color: #e4e4e7;
+            letter-spacing: 0.5px;
         }
 
-        .username {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        /* Bio Strategy - Ultra Realistic */
+        /* Realistic Bio */
         .bio-text {
-            font-size: 14.5px;
+            font-size: 14px;
             color: #d4d4d8;
             line-height: 1.6;
-            margin: 0 0 25px 0;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 16px;
-            border-radius: 12px;
+            margin: 20px 0;
             text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .bio-text span {
-            color: var(--accent-pink);
-            font-weight: 700;
-        }
-
-        /* The Mastermind ID Box */
-        .instruction-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        
+        .highlight-box {
+            background: rgba(244, 63, 94, 0.05);
+            border-left: 3px solid var(--accent-pink);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            font-size: 13.5px;
+            color: #a1a1aa;
+            margin-bottom: 25px;
             text-align: left;
         }
 
-        .id-box {
+        .highlight-box span { color: #f4f4f5; font-weight: 700; }
+
+        /* Timer & Token Box (The Master Trick) */
+        .token-container {
             background: #000;
-            border: 1px solid #3f3f46;
-            padding: 12px 16px;
-            border-radius: 12px;
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .token-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .timer-text {
+            color: var(--warning);
+            font-family: 'Space Mono', monospace;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            animation: pulse-warn 2s infinite;
+        }
+
+        .id-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #18181b;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed #3f3f46;
         }
 
         .id-code {
             font-size: 18px;
             font-weight: 900;
             color: #fff;
-            letter-spacing: 1.5px;
-            font-family: monospace;
+            letter-spacing: 2px;
+            font-family: 'Space Mono', monospace;
         }
 
         .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            background: var(--text-light);
+            color: #000;
             border: none;
             padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
             cursor: pointer;
+            text-transform: uppercase;
             transition: 0.2s;
         }
 
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
+        .copy-btn:active { transform: scale(0.95); }
 
-        /* Main Call Button - Restored Awesome Design */
+        /* Main Call Button */
         .cta-btn {
             width: 100%;
             background: linear-gradient(90deg, #f43f5e, #fb923c);
             color: #fff;
             border: none;
             padding: 18px;
-            border-radius: 40px;
-            font-size: 17px;
+            border-radius: 12px; /* A bit more professional than 40px */
+            font-size: 16px;
             font-weight: 900;
             cursor: pointer;
             text-transform: uppercase;
@@ -173,80 +204,101 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        .cta-btn:active {
-            transform: scale(0.96);
-        }
+        .cta-btn:active { transform: scale(0.96); }
 
-        .secure-note {
-            font-size: 12px;
-            color: #71717a;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @keyframes pulse-warn { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     </style>
 </head>
 <body>
 
     <div class="profile-card">
         
+        <div class="security-badge">
+            <div class="security-dot"></div> End-to-End Encrypted
+        </div>
+
         <!-- Profile Section -->
         <div class="avatar-container">
-            <!-- আপনার দেওয়া ছবি এখানে যুক্ত করা হয়েছে -->
             <img src="https://github.com/ettieshulma5757-max/vdfvd/blob/main/2430769_20260721230659_1.jpg?raw=true" alt="Profile" class="avatar">
-            <div class="status-badge"></div>
         </div>
 
         <div class="name">Secret_Profile 🔒</div>
-        <div class="username">@hidden_user</div>
 
-        <!-- Awesome Blended Bio -->
+        <!-- Logical Bio -->
         <div class="bio-text">
-            Hey! Please don't ask for my WhatsApp or phone number. I don't give it to strangers! 🚫<br><br>
-            If you actually want to chat or see me on a <span>Private Video Call</span>, I only use this secure personal site. Just copy my user ID below and search for me there! 💦
+            Hey! Please don't ask for my WhatsApp or phone number. I don't give it to strangers. 🚫
         </div>
 
-        <!-- The ID Search Instruction -->
-        <div class="instruction-title">My Private Search ID:</div>
-        
-        <div class="id-box">
-            <div class="id-code" id="secretId">UID-849302</div>
-            <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy</button>
+        <div class="highlight-box">
+            To protect my privacy, my <span>Search ID auto-resets every 5 minutes</span>. <br><br>Copy the active ID below before it expires, then search it on my private dashboard to unlock my live video call! 💦
         </div>
 
-        <!-- The Direct CPA Link Button (Restored Design) -->
+        <!-- Dynamic Timer ID Box (The Mastermind Element) -->
+        <div class="token-container">
+            <div class="token-header">
+                <span>Active Search ID</span>
+                <span class="timer-text" id="countdown">04:59</span>
+            </div>
+            
+            <div class="id-row">
+                <div class="id-code" id="secretId">TK-89X2B</div>
+                <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy</button>
+            </div>
+        </div>
+
+        <!-- The Direct CPA Link Button -->
         <button class="cta-btn" onclick="openSite()">
-            🔗 Go To My Private Site
+            🔗 Access My Private Site
         </button>
-
-        <div class="secure-note">
-            🔒 100% Secure & Private Connection
-        </div>
 
     </div>
 
     <script>
-        // আপনার CPA লিংক
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        // ID Copy Function 
+        // Advanced Timer Logic
+        let timeLeft = 299; // 5 minutes in seconds
+        
+        function updateTimer() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+            
+            document.getElementById("countdown").innerText = m + ":" + s;
+            
+            if(timeLeft > 0) {
+                timeLeft--;
+            } else {
+                // When timer hits 0, ID changes to create real fear of missing out
+                document.getElementById("secretId").innerText = "EXPIRED";
+                document.getElementById("secretId").style.color = "#f43f5e";
+                document.getElementById("countdown").innerText = "00:00";
+                document.getElementById("copyBtn").disabled = true;
+                document.getElementById("copyBtn").style.opacity = "0.5";
+            }
+        }
+        
+        setInterval(updateTimer, 1000);
+
+        // Copy Function
         function copyMyId() {
+            if(timeLeft === 0) return;
+            
             const idText = document.getElementById("secretId").innerText;
             navigator.clipboard.writeText(idText).then(() => {
                 const btn = document.getElementById("copyBtn");
-                btn.innerText = "Copied! ✔";
-                btn.style.background = "#10b981"; // Green background on success
+                btn.innerText = "COPIED ✔";
+                btn.style.background = "#10b981"; 
+                btn.style.color = "#fff";
                 
                 if (navigator.vibrate) navigator.vibrate(50);
                 
-                // ৩ সেকেন্ড পর আবার আগের মতো হয়ে যাবে
                 setTimeout(() => {
-                    btn.innerText = "Copy";
-                    btn.style.background = "rgba(255, 255, 255, 0.1)";
+                    btn.innerText = "COPY";
+                    btn.style.background = "#fafafa";
+                    btn.style.color = "#000";
                 }, 3000);
             });
         }
