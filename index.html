@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>Encrypted Portal 🔒</title>
+    <title>Gateway 🔒</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #09090b;
-            --card-bg: #121214;
-            --accent-pink: #f43f5e;
-            --accent-glow: rgba(244, 63, 94, 0.3);
-            --text-light: #fafafa;
-            --text-muted: #a1a1aa;
-            --warning: #fbbf24;
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --accent-red: #e11d48;
+            --text-light: #f4f4f5;
+            --text-muted: #71717a;
+            --success: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
@@ -27,195 +26,211 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
+            /* Subtle dark grid for a secret portal vibe */
             background-image: 
-                linear-gradient(rgba(244, 63, 94, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(244, 63, 94, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
         .profile-card {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px 22px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 35px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
             position: relative;
         }
 
-        /* Security Badge Top */
-        .security-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 700;
+        /* Glitch Title Effect */
+        .system-status {
+            font-size: 10px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-family: 'Space Mono', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .security-dot {
-            width: 6px; height: 6px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #10b981;
+        .status-dot {
+            width: 5px; height: 5px; background: var(--success); border-radius: 50%;
+            box-shadow: 0 0 10px var(--success);
         }
 
-        /* Profile Header */
+        /* Avatar Container - No Border, Just Shadow */
         .avatar-container {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px dashed #3f3f46;
-            padding: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         .avatar {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
-            filter: blur(4px) brightness(0.8) contrast(1.1);
-            transform: scale(1.1); 
+            filter: blur(5px) brightness(0.6) grayscale(20%);
+            transform: scale(1.15); 
         }
 
         .name {
-            font-size: 20px;
-            font-weight: 900;
-            margin-bottom: 2px;
-            color: #e4e4e7;
-            letter-spacing: 0.5px;
-        }
-
-        /* Realistic Bio */
-        .bio-text {
-            font-size: 14px;
-            color: #d4d4d8;
-            line-height: 1.6;
-            margin: 20px 0;
-            text-align: left;
-        }
-        
-        .highlight-box {
-            background: rgba(244, 63, 94, 0.05);
-            border-left: 3px solid var(--accent-pink);
-            padding: 15px;
-            border-radius: 0 10px 10px 0;
-            font-size: 13.5px;
-            color: #a1a1aa;
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
             margin-bottom: 25px;
-            text-align: left;
         }
 
-        .highlight-box span { color: #f4f4f5; font-weight: 700; }
-
-        /* Timer & Token Box (The Master Trick) */
-        .token-container {
-            background: #000;
-            border: 1px solid #27272a;
-            border-radius: 14px;
-            padding: 16px;
+        /* The Mastermind Psychology Text */
+        .instruction-box {
+            background: rgba(225, 29, 72, 0.03);
+            border: 1px solid rgba(225, 29, 72, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
             margin-bottom: 25px;
             position: relative;
         }
 
-        .token-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .timer-text {
-            color: var(--warning);
-            font-family: 'Space Mono', monospace;
-            background: rgba(251, 191, 36, 0.1);
-            padding: 3px 8px;
-            border-radius: 4px;
-            animation: pulse-warn 2s infinite;
-        }
-
-        .id-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #18181b;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px dashed #3f3f46;
-        }
-
-        .id-code {
-            font-size: 18px;
+        .instruction-box::before {
+            content: '!';
+            position: absolute;
+            top: -10px; left: 15px;
+            background: var(--bg-dark);
+            color: var(--accent-red);
             font-weight: 900;
-            color: #fff;
-            letter-spacing: 2px;
-            font-family: 'Space Mono', monospace;
+            width: 20px; height: 20px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 1px solid rgba(225, 29, 72, 0.3);
+            font-size: 12px;
         }
 
-        .copy-btn {
+        .psych-text {
+            font-size: 14px;
+            color: #a1a1aa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .psych-text strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Action Flow */
+        .action-steps {
+            background: #000;
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #27272a;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .step-row:last-child { margin-bottom: 0; }
+
+        .step-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .copy-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #18181b;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #3f3f46;
+        }
+
+        .id-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .copy-icon {
             background: var(--text-light);
             color: #000;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
             font-weight: 800;
             cursor: pointer;
             text-transform: uppercase;
-            transition: 0.2s;
         }
 
-        .copy-btn:active { transform: scale(0.95); }
-
-        /* Main Call Button */
+        /* The Ultimate CTA Button */
         .cta-btn {
             width: 100%;
-            background: linear-gradient(90deg, #f43f5e, #fb923c);
+            background: var(--accent-red);
             color: #fff;
             border: none;
-            padding: 18px;
-            border-radius: 12px; /* A bit more professional than 40px */
-            font-size: 16px;
+            padding: 16px;
+            border-radius: 8px; /* Sharp & Serious look */
+            font-size: 15px;
             font-weight: 900;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 25px var(--accent-glow);
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: transform 0.2s;
-            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-btn:active { transform: scale(0.96); }
+        /* Sweep effect on button */
+        .cta-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-25deg);
+            animation: sweep 3s infinite;
+        }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        @keyframes pulse-warn { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .cta-btn:active { transform: scale(0.97); }
+
+        .btn-subtext {
+            font-size: 10px;
+            color: #71717a;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes sweep { 0% { left: -100%; } 50%, 100% { left: 200%; } }
     </style>
 </head>
 <body>
 
     <div class="profile-card">
         
-        <div class="security-badge">
-            <div class="security-dot"></div> End-to-End Encrypted
+        <div class="system-status">
+            <div class="status-dot"></div> Connection Secure
         </div>
 
         <!-- Profile Section -->
@@ -223,87 +238,66 @@
             <img src="https://github.com/ettieshulma5757-max/vdfvd/blob/main/2430769_20260721230659_1.jpg?raw=true" alt="Profile" class="avatar">
         </div>
 
-        <div class="name">Secret_Profile 🔒</div>
+        <div class="name">Access Restricted 🔒</div>
 
-        <!-- Logical Bio -->
-        <div class="bio-text">
-            Hey! Please don't ask for my WhatsApp or phone number. I don't give it to strangers. 🚫
-        </div>
-
-        <div class="highlight-box">
-            To protect my privacy, my <span>Search ID auto-resets every 5 minutes</span>. <br><br>Copy the active ID below before it expires, then search it on my private dashboard to unlock my live video call! 💦
-        </div>
-
-        <!-- Dynamic Timer ID Box (The Mastermind Element) -->
-        <div class="token-container">
-            <div class="token-header">
-                <span>Active Search ID</span>
-                <span class="timer-text" id="countdown">04:59</span>
+        <!-- The Mastermind Psychology Text -->
+        <div class="instruction-box">
+            <div class="psych-text">
+                I don't share my personal contact with random people. If you seriously want to join my <strong>Private Video Call</strong>, you have to prove you can follow instructions.
             </div>
             
-            <div class="id-row">
-                <div class="id-code" id="secretId">TK-89X2B</div>
-                <button class="copy-btn" id="copyBtn" onclick="copyMyId()">Copy</button>
+            <div class="action-steps">
+                <div class="step-row">
+                    <span class="step-label">STEP 1: Copy Passcode</span>
+                    <div class="copy-area">
+                        <span class="id-text" id="passcode">VIP-9024</span>
+                        <button class="copy-icon" id="copyBtn" onclick="copyId()">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="step-row" style="margin-top: 10px;">
+                    <span class="step-label">STEP 2: Enter Portal</span>
+                    <span style="font-size: 11px; color: #a1a1aa;">Click the button below</span>
+                </div>
+                
+                <div class="step-row" style="margin-top: 10px;">
+                    <span class="step-label">STEP 3: Search My Code</span>
+                    <span style="font-size: 11px; color: var(--success); font-weight:700;">Unlock Live Cam 💦</span>
+                </div>
             </div>
         </div>
 
-        <!-- The Direct CPA Link Button -->
+        <!-- The Button that Directs them inside -->
         <button class="cta-btn" onclick="openSite()">
-            🔗 Access My Private Site
+            ENTER PRIVATE PORTAL
         </button>
+        
+        <div class="btn-subtext">
+            Search my passcode inside to connect
+        </div>
 
     </div>
 
     <script>
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        // Advanced Timer Logic
-        let timeLeft = 299; // 5 minutes in seconds
-        
-        function updateTimer() {
-            let m = Math.floor(timeLeft / 60);
-            let s = timeLeft % 60;
-            m = m < 10 ? "0" + m : m;
-            s = s < 10 ? "0" + s : s;
-            
-            document.getElementById("countdown").innerText = m + ":" + s;
-            
-            if(timeLeft > 0) {
-                timeLeft--;
-            } else {
-                // When timer hits 0, ID changes to create real fear of missing out
-                document.getElementById("secretId").innerText = "EXPIRED";
-                document.getElementById("secretId").style.color = "#f43f5e";
-                document.getElementById("countdown").innerText = "00:00";
-                document.getElementById("copyBtn").disabled = true;
-                document.getElementById("copyBtn").style.opacity = "0.5";
-            }
-        }
-        
-        setInterval(updateTimer, 1000);
-
-        // Copy Function
-        function copyMyId() {
-            if(timeLeft === 0) return;
-            
-            const idText = document.getElementById("secretId").innerText;
-            navigator.clipboard.writeText(idText).then(() => {
+        function copyId() {
+            const code = document.getElementById("passcode").innerText;
+            navigator.clipboard.writeText(code).then(() => {
                 const btn = document.getElementById("copyBtn");
-                btn.innerText = "COPIED ✔";
+                btn.innerText = "COPIED";
                 btn.style.background = "#10b981"; 
                 btn.style.color = "#fff";
                 
                 if (navigator.vibrate) navigator.vibrate(50);
                 
-                setTimeout(() => {
-                    btn.innerText = "COPY";
-                    btn.style.background = "#fafafa";
-                    btn.style.color = "#000";
-                }, 3000);
+                // Shake effect on the main button to grab attention after copying
+                const cta = document.querySelector('.cta-btn');
+                cta.style.transform = 'scale(1.05)';
+                setTimeout(() => cta.style.transform = 'scale(1)', 200);
             });
         }
 
-        // Redirect Function
         function openSite() {
             if (navigator.vibrate) navigator.vibrate(80);
             window.location.href = cpaLink;
