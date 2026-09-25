@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>Exclusive Connection 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+    <title>Private Search 🔍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0510; /* Deep purple/black */
-            --card-bg: rgba(22, 10, 32, 0.7);
-            --neon-pink: #ff2a7a;
-            --neon-purple: #9d4edd;
-            --text-light: #ffffff;
-            --text-dim: #b39db8;
+            --bg-dark: #0a0a0a;
+            --card-bg: #141414;
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.4);
+            --success: #10b981;
+            --text-light: #f4f4f5;
+            --text-muted: #a1a1aa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -25,247 +26,203 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            overflow: hidden; /* Prevent scrolling if not needed */
+            padding: 15px;
+            background-image: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 60%);
         }
 
-        /* Abstract Background Glow */
-        .bg-glow-1 {
-            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(255, 42, 122, 0.2) 0%, transparent 70%);
-            z-index: -1; filter: blur(40px);
-        }
-        .bg-glow-2 {
-            position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
-            z-index: -1; filter: blur(40px);
-        }
-
-        /* Main Glassmorphism Card */
-        .profile-card {
+        .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 35px 25px;
+            border-radius: 20px;
+            padding: 30px 20px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             text-align: center;
-            position: relative;
-        }
-
-        /* Top Status Indicator */
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 25px;
-        }
-        .pulse-ring {
-            width: 8px; height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 12px #10b981;
-            animation: pulse 2s infinite;
-        }
-
-        /* Avatar with Gradient Border */
-        .avatar-wrapper {
-            position: relative;
-            width: 105px;
-            height: 105px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
-            box-shadow: 0 10px 25px rgba(255, 42, 122, 0.3);
-        }
-
-        .avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid var(--bg-dark);
-            filter: blur(3px) brightness(0.85); /* Reduced blur slightly for better aesthetic */
-        }
-
-        .name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 24px;
-            font-weight: 900;
-            background: linear-gradient(to right, #fff, #ffb3c6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        /* The Psychology Text (Elegant & Direct) */
-        .story-text {
-            font-size: 14.5px;
-            color: var(--text-dim);
-            line-height: 1.6;
-            margin-bottom: 25px;
-            padding: 0 10px;
-        }
-        .story-text span {
-            color: #fff;
-            font-weight: 800;
-            border-bottom: 1px solid var(--neon-pink);
-        }
-
-        /* The Action Panel */
-        .action-panel {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 16px;
-            padding: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 25px;
-        }
-
-        .action-title {
-            font-size: 12px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .action-title::before, .action-title::after {
-            content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1);
-        }
-
-        /* Search ID Box */
-        .search-id-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed rgba(255, 42, 122, 0.4);
-            padding: 12px 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-
-        .id-label {
-            font-size: 11px; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase;
-        }
-        .id-value {
-            font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 900; color: #fff; letter-spacing: 1px;
-        }
-
-        .copy-btn {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .copy-btn:hover { background: rgba(255, 255, 255, 0.15); }
-
-        /* The Final CTA Button */
-        .cta-btn {
-            width: 100%;
-            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
-            color: #fff;
-            border: none;
-            padding: 18px;
-            border-radius: 14px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 16px;
-            font-weight: 900;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 10px 25px rgba(255, 42, 122, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
             overflow: hidden;
         }
 
-        /* Glow effect on hover/active */
-        .cta-btn::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: translateX(-100%); transition: 0.5s;
+        /* Profile Header */
+        .avatar-box {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--primary), #ec4899);
         }
-        .cta-btn:hover::before { transform: translateX(100%); }
-        .cta-btn:active { transform: scale(0.96); box-shadow: 0 5px 15px rgba(255, 42, 122, 0.3); }
-
-        .helper-text {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 15px;
+        .avatar {
+            width: 100%; height: 100%;
+            object-fit: cover; border-radius: 50%;
+            border: 3px solid var(--card-bg);
+            filter: blur(4px) brightness(0.8);
         }
 
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        .name { font-size: 22px; font-weight: 800; margin-bottom: 5px; }
+        
+        .rules-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            font-size: 13px;
+            color: #d4d4d8;
+            text-align: left;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .rules-box strong { color: #fff; }
+        .rules-box .highlight { color: var(--primary); font-weight: 800; }
+
+        /* Step 1: Search Section */
+        #searchSection { transition: 0.3s; }
+        
+        .id-display {
+            font-size: 12px; color: var(--text-muted); margin-bottom: 15px;
+        }
+        .id-display span {
+            font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: #fff; background: #000; padding: 4px 10px; border-radius: 6px; border: 1px solid #333; margin-left: 5px;
+        }
+
+        .search-wrapper {
+            display: flex; gap: 8px; margin-bottom: 10px;
+        }
+        .search-input {
+            flex: 1;
+            background: #000;
+            border: 1px solid #3f3f46;
+            padding: 14px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Space Mono', monospace;
+            outline: none;
+        }
+        .search-input:focus { border-color: var(--primary); }
+        
+        .search-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-btn:active { transform: scale(0.95); }
+
+        /* Loader */
+        #loader {
+            display: none;
+            margin: 20px 0;
+            font-size: 13px;
+            color: var(--primary);
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+        }
+        .spinner {
+            width: 24px; height: 24px;
+            border: 3px solid rgba(139, 92, 246, 0.3);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        /* Step 2: Result & CPA Button */
+        #resultSection { display: none; animation: fadeIn 0.5s; }
+        
+        .success-msg {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            color: var(--success); font-weight: 800; font-size: 16px; margin-bottom: 15px;
+        }
+
+        .next-step-box {
+            background: #000;
+            border: 1px dashed var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #a1a1aa;
+            text-align: left;
+        }
+        .next-step-box span { color: #fff; font-weight: 700; }
+
+        .cta-btn {
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), #ec4899);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px var(--primary-glow);
+            transition: transform 0.2s;
+            animation: float 3s ease-in-out infinite;
+        }
+        .cta-btn:active { transform: scale(0.96); }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
-
-    <div class="profile-card">
+    <div class="container">
         
-        <div class="status-pill">
-            <div class="pulse-ring"></div> Secret Connection
-        </div>
-
-        <!-- Profile Section -->
-        <div class="avatar-wrapper">
+        <div class="avatar-box">
             <img src="https://github.com/ettieshulma5757-max/vdfvd/blob/main/2430769_20260721230659_1.jpg?raw=true" alt="Profile" class="avatar">
         </div>
 
-        <div class="name">Hidden_Angel 🦋</div>
+        <div class="name">Secret_Angel 🤫</div>
 
-        <!-- The Psychology Text -->
-        <div class="story-text">
-            I don't use public apps to chat. If you want a <span>Private Video Call</span> with me, you need to find me on my personal connection site.
-        </div>
-        
-        <!-- Action Panel -->
-        <div class="action-panel">
-            <div class="action-title">How to connect</div>
-            
-            <div class="search-id-box">
-                <div style="text-align: left;">
-                    <div class="id-label">My Search ID</div>
-                    <div class="id-value" id="searchId">LUV-773X</div>
-                </div>
-                <button class="copy-btn" id="copyBtn" onclick="copyId()">COPY</button>
-            </div>
-            
-            <div style="font-size: 12px; color: var(--text-dim); text-align: left; padding: 0 5px;">
-                * Copy my ID, then enter the site below and paste it in the search bar to find my profile!
-            </div>
+        <!-- The Rules (Mastermind Psychology) -->
+        <div class="rules-box">
+            👉 <strong>Normal Message:</strong> Jodi kotha bolte chao, ekhoni message dao. Amar hate thaka smartphone-e sathe sathe notification ashbe. Kono emergency na thakle <strong>1 minute-er moddhe reply paba!</strong><br><br>
+            👉 <strong>Video Call:</strong> Video call korte chaile <span class="highlight">sudhumatro raate call korba.</span>
         </div>
 
-        <!-- The Final CTA Button -->
-        <button class="cta-btn" onclick="openSite()">
-            FIND MY PROFILE
-        </button>
-        
-        <div class="helper-text">
-            100% Private & Secure Connection
+        <!-- Phase 1: Search System -->
+        <div id="searchSection">
+            <div class="id-display">My Private ID: <span>LUV-007</span></div>
+            
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="Type ID here..." autocomplete="off">
+                <button class="search-btn" onclick="startSearch()">SEARCH</button>
+            </div>
+            <div style="font-size: 11px; color: #71717a;">* Search my ID to unlock the portal</div>
+        </div>
+
+        <!-- Phase 2: Fake Loading -->
+        <div id="loader">
+            <div class="spinner"></div>
+            Scanning database...
+        </div>
+
+        <!-- Phase 3: The CPA Redirect -->
+        <div id="resultSection">
+            <div class="success-msg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Profile Found!
+            </div>
+            
+            <div class="next-step-box">
+                <strong>Almost there!</strong><br><br>
+                Click the button below and create a simple free profile with <span>any Name & Password</span> on the next page. Once done, you will directly enter my personal chat room!
+            </div>
+
+            <button class="cta-btn" onclick="openSite()">
+                CREATE PROFILE & ENTER
+            </button>
         </div>
 
     </div>
@@ -273,29 +230,37 @@
     <script>
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        function copyId() {
-            const code = document.getElementById("searchId").innerText;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById("copyBtn");
-                btn.innerText = "COPIED!";
-                btn.style.background = "#10b981"; // Success green
-                btn.style.borderColor = "#10b981";
+        function startSearch() {
+            const input = document.getElementById("searchInput").value.trim();
+            const searchBox = document.querySelector(".search-input");
+
+            // If empty, shake the input box
+            if(input === "") {
+                searchBox.style.borderColor = "#ef4444";
+                searchBox.style.transform = "translateX(-5px)";
+                setTimeout(() => searchBox.style.transform = "translateX(5px)", 100);
+                setTimeout(() => searchBox.style.transform = "translateX(0)", 200);
+                return;
+            }
+
+            if (navigator.vibrate) navigator.vibrate(50);
+
+            // Hide Search, Show Loader
+            document.getElementById("searchSection").style.display = "none";
+            const loader = document.getElementById("loader");
+            loader.style.display = "block";
+
+            // Simulate server connection for 2 seconds (Builds massive trust)
+            setTimeout(() => {
+                loader.innerText = "Match Verified!";
+                loader.style.color = "#10b981";
                 
-                if (navigator.vibrate) navigator.vibrate(50);
-                
-                // Button highlight trick
-                const cta = document.querySelector('.cta-btn');
-                cta.style.transform = 'scale(1.03)';
+                // Show final step
                 setTimeout(() => {
-                    cta.style.transform = 'scale(1)';
-                    // Revert copy button after 2.5s
-                    setTimeout(() => {
-                        btn.innerText = "COPY";
-                        btn.style.background = "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))";
-                        btn.style.borderColor = "rgba(255,255,255,0.1)";
-                    }, 2500);
-                }, 200);
-            });
+                    loader.style.display = "none";
+                    document.getElementById("resultSection").style.display = "block";
+                }, 800);
+            }, 1800);
         }
 
         function openSite() {
