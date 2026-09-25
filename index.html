@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>Gateway 🔒</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <title>Exclusive Connection 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050505;
-            --card-bg: #111111;
-            --accent-red: #e11d48;
-            --text-light: #f4f4f5;
-            --text-muted: #71717a;
-            --success: #10b981;
+            --bg-dark: #0a0510; /* Deep purple/black */
+            --card-bg: rgba(22, 10, 32, 0.7);
+            --neon-pink: #ff2a7a;
+            --neon-purple: #9d4edd;
+            --text-light: #ffffff;
+            --text-dim: #b39db8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body {
             background: var(--bg-dark);
@@ -25,255 +25,247 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            /* Subtle dark grid for a secret portal vibe */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
+            padding: 20px;
+            overflow: hidden; /* Prevent scrolling if not needed */
         }
 
+        /* Abstract Background Glow */
+        .bg-glow-1 {
+            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(255, 42, 122, 0.2) 0%, transparent 70%);
+            z-index: -1; filter: blur(40px);
+        }
+        .bg-glow-2 {
+            position: fixed; bottom: -10%; right: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+            z-index: -1; filter: blur(40px);
+        }
+
+        /* Main Glassmorphism Card */
         .profile-card {
             width: 100%;
             max-width: 400px;
             background: var(--card-bg);
-            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
             padding: 35px 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
             text-align: center;
             position: relative;
         }
 
-        /* Glitch Title Effect */
-        .system-status {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            font-family: 'Space Mono', monospace;
-            display: flex;
+        /* Top Status Indicator */
+        .status-pill {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
         }
-        .status-dot {
-            width: 5px; height: 5px; background: var(--success); border-radius: 50%;
-            box-shadow: 0 0 10px var(--success);
+        .pulse-ring {
+            width: 8px; height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #10b981;
+            animation: pulse 2s infinite;
         }
 
-        /* Avatar Container - No Border, Just Shadow */
-        .avatar-container {
+        /* Avatar with Gradient Border */
+        .avatar-wrapper {
             position: relative;
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 20px;
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 15px;
             border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            padding: 3px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 10px 25px rgba(255, 42, 122, 0.3);
         }
 
         .avatar {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(5px) brightness(0.6) grayscale(20%);
-            transform: scale(1.15); 
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            filter: blur(3px) brightness(0.85); /* Reduced blur slightly for better aesthetic */
         }
 
         .name {
-            font-size: 18px;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-        }
-
-        /* The Mastermind Psychology Text */
-        .instruction-box {
-            background: rgba(225, 29, 72, 0.03);
-            border: 1px solid rgba(225, 29, 72, 0.15);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: left;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .instruction-box::before {
-            content: '!';
-            position: absolute;
-            top: -10px; left: 15px;
-            background: var(--bg-dark);
-            color: var(--accent-red);
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
             font-weight: 900;
-            width: 20px; height: 20px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; border: 1px solid rgba(225, 29, 72, 0.3);
-            font-size: 12px;
+            background: linear-gradient(to right, #fff, #ffb3c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
 
-        .psych-text {
-            font-size: 14px;
-            color: #a1a1aa;
+        /* The Psychology Text (Elegant & Direct) */
+        .story-text {
+            font-size: 14.5px;
+            color: var(--text-dim);
             line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            padding: 0 10px;
         }
-
-        .psych-text strong {
+        .story-text span {
             color: #fff;
-            font-weight: 700;
+            font-weight: 800;
+            border-bottom: 1px solid var(--neon-pink);
         }
 
-        /* Action Flow */
-        .action-steps {
-            background: #000;
-            border-radius: 8px;
-            padding: 12px;
-            border: 1px solid #27272a;
+        /* The Action Panel */
+        .action-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 25px;
         }
 
-        .step-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        .step-row:last-child { margin-bottom: 0; }
-
-        .step-label {
+        .action-title {
             font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .copy-area {
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
-            background: #18181b;
-            padding: 6px 10px;
-            border-radius: 6px;
-            border: 1px solid #3f3f46;
+        }
+        .action-title::before, .action-title::after {
+            content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1);
         }
 
-        .id-text {
-            font-family: 'Space Mono', monospace;
-            font-size: 14px;
+        /* Search ID Box */
+        .search-id-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 42, 122, 0.4);
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .id-label {
+            font-size: 11px; color: var(--text-dim); margin-bottom: 4px; text-transform: uppercase;
+        }
+        .id-value {
+            font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 900; color: #fff; letter-spacing: 1px;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             color: #fff;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .copy-icon {
-            background: var(--text-light);
-            color: #000;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 800;
             cursor: pointer;
-            text-transform: uppercase;
+            transition: all 0.3s;
         }
+        .copy-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
-        /* The Ultimate CTA Button */
+        /* The Final CTA Button */
         .cta-btn {
             width: 100%;
-            background: var(--accent-red);
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
             color: #fff;
             border: none;
-            padding: 16px;
-            border-radius: 8px; /* Sharp & Serious look */
-            font-size: 15px;
+            padding: 18px;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
             font-weight: 900;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            box-shadow: 0 10px 25px rgba(255, 42, 122, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
             overflow: hidden;
         }
 
-        /* Sweep effect on button */
-        .cta-btn::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-25deg);
-            animation: sweep 3s infinite;
+        /* Glow effect on hover/active */
+        .cta-btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%); transition: 0.5s;
         }
+        .cta-btn:hover::before { transform: translateX(100%); }
+        .cta-btn:active { transform: scale(0.96); box-shadow: 0 5px 15px rgba(255, 42, 122, 0.3); }
 
-        .cta-btn:active { transform: scale(0.97); }
-
-        .btn-subtext {
-            font-size: 10px;
-            color: #71717a;
+        .helper-text {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
             margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        @keyframes sweep { 0% { left: -100%; } 50%, 100% { left: 200%; } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
     <div class="profile-card">
         
-        <div class="system-status">
-            <div class="status-dot"></div> Connection Secure
+        <div class="status-pill">
+            <div class="pulse-ring"></div> Secret Connection
         </div>
 
         <!-- Profile Section -->
-        <div class="avatar-container">
+        <div class="avatar-wrapper">
             <img src="https://github.com/ettieshulma5757-max/vdfvd/blob/main/2430769_20260721230659_1.jpg?raw=true" alt="Profile" class="avatar">
         </div>
 
-        <div class="name">Access Restricted 🔒</div>
+        <div class="name">Hidden_Angel 🦋</div>
 
-        <!-- The Mastermind Psychology Text -->
-        <div class="instruction-box">
-            <div class="psych-text">
-                I don't share my personal contact with random people. If you seriously want to join my <strong>Private Video Call</strong>, you have to prove you can follow instructions.
+        <!-- The Psychology Text -->
+        <div class="story-text">
+            I don't use public apps to chat. If you want a <span>Private Video Call</span> with me, you need to find me on my personal connection site.
+        </div>
+        
+        <!-- Action Panel -->
+        <div class="action-panel">
+            <div class="action-title">How to connect</div>
+            
+            <div class="search-id-box">
+                <div style="text-align: left;">
+                    <div class="id-label">My Search ID</div>
+                    <div class="id-value" id="searchId">LUV-773X</div>
+                </div>
+                <button class="copy-btn" id="copyBtn" onclick="copyId()">COPY</button>
             </div>
             
-            <div class="action-steps">
-                <div class="step-row">
-                    <span class="step-label">STEP 1: Copy Passcode</span>
-                    <div class="copy-area">
-                        <span class="id-text" id="passcode">VIP-9024</span>
-                        <button class="copy-icon" id="copyBtn" onclick="copyId()">Copy</button>
-                    </div>
-                </div>
-                
-                <div class="step-row" style="margin-top: 10px;">
-                    <span class="step-label">STEP 2: Enter Portal</span>
-                    <span style="font-size: 11px; color: #a1a1aa;">Click the button below</span>
-                </div>
-                
-                <div class="step-row" style="margin-top: 10px;">
-                    <span class="step-label">STEP 3: Search My Code</span>
-                    <span style="font-size: 11px; color: var(--success); font-weight:700;">Unlock Live Cam 💦</span>
-                </div>
+            <div style="font-size: 12px; color: var(--text-dim); text-align: left; padding: 0 5px;">
+                * Copy my ID, then enter the site below and paste it in the search bar to find my profile!
             </div>
         </div>
 
-        <!-- The Button that Directs them inside -->
+        <!-- The Final CTA Button -->
         <button class="cta-btn" onclick="openSite()">
-            ENTER PRIVATE PORTAL
+            FIND MY PROFILE
         </button>
         
-        <div class="btn-subtext">
-            Search my passcode inside to connect
+        <div class="helper-text">
+            100% Private & Secure Connection
         </div>
 
     </div>
@@ -282,19 +274,27 @@
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
         function copyId() {
-            const code = document.getElementById("passcode").innerText;
+            const code = document.getElementById("searchId").innerText;
             navigator.clipboard.writeText(code).then(() => {
                 const btn = document.getElementById("copyBtn");
-                btn.innerText = "COPIED";
-                btn.style.background = "#10b981"; 
-                btn.style.color = "#fff";
+                btn.innerText = "COPIED!";
+                btn.style.background = "#10b981"; // Success green
+                btn.style.borderColor = "#10b981";
                 
                 if (navigator.vibrate) navigator.vibrate(50);
                 
-                // Shake effect on the main button to grab attention after copying
+                // Button highlight trick
                 const cta = document.querySelector('.cta-btn');
-                cta.style.transform = 'scale(1.05)';
-                setTimeout(() => cta.style.transform = 'scale(1)', 200);
+                cta.style.transform = 'scale(1.03)';
+                setTimeout(() => {
+                    cta.style.transform = 'scale(1)';
+                    // Revert copy button after 2.5s
+                    setTimeout(() => {
+                        btn.innerText = "COPY";
+                        btn.style.background = "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))";
+                        btn.style.borderColor = "rgba(255,255,255,0.1)";
+                    }, 2500);
+                }, 200);
             });
         }
 
