@@ -48,7 +48,7 @@
             overflow: hidden;
         }
 
-        /* Protected Badge Area (Replaced Profile Pic) */
+        /* Protected Badge Area */
         .badge-box {
             position: relative;
             width: 110px;
@@ -67,13 +67,24 @@
             animation: float 3s ease-in-out infinite;
         }
 
+        /* New VIP Design for Secure Gateway */
+        .title-box {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            padding: 6px 20px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+        }
+
         .title-text {
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
             color: #00d4ff;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
         }
 
         /* Rules Box */
@@ -123,21 +134,27 @@
             cursor: pointer;
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
+            white-space: nowrap; /* Button text won't break */
         }
         .copy-btn:active { transform: scale(0.9); }
 
+        /* Fixed Button Overflow Issue Here */
         .search-wrapper {
-            display: flex; gap: 8px; margin-bottom: 15px;
+            display: flex; 
+            gap: 8px; 
+            margin-bottom: 15px;
+            width: 100%; /* Ensure it stays inside */
         }
         
         .search-input {
             flex: 1;
+            min-width: 0; /* Important fix for mobile overflow */
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255,255,255,0.2);
             padding: 14px;
             border-radius: 12px;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
             text-align: center;
             transition: 0.3s;
@@ -145,15 +162,18 @@
         .search-input:focus { border-color: #00d4ff; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
         
         .search-btn {
+            flex-shrink: 0; /* Prevents button from squishing too much */
             background: linear-gradient(45deg, #00d4ff, #7928ca);
             color: #fff;
             border: none;
-            padding: 0 20px;
+            padding: 0 16px; /* Adjusted padding to fit perfectly */
             border-radius: 12px;
             font-weight: 800;
+            font-size: 14px;
             cursor: pointer;
             transition: 0.2s;
             box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            white-space: nowrap; /* Keeps text in one line */
         }
         .search-btn:active { transform: scale(0.95); }
 
@@ -224,25 +244,26 @@
 
     <div class="container">
         
-        <!-- Ei src="" er vitore apnar image_a066c6.png er link ta diben -->
         <div class="badge-box">
+            <!-- Apnar dewa image tag[cite: 3] -->
             <img src="image_a066c6.png" alt="Secure Gateway" class="badge-img">
         </div>
 
-        <div class="title-text">Secure Chat Gateway</div>
+        <!-- Premium Design for Title -->
+        <div class="title-box">
+            <div class="title-text">Secure Gateway</div>
+        </div>
 
-        <!-- USA Standard Psychological Rules -->
         <div class="rules-box">
             💬 <strong>Quick Chat:</strong> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <strong>1 minute!</strong><br><br>
             🎥 <strong>Video Calls:</strong> Please note, video calls are strictly for <span class="highlight">late nights only.</span>
         </div>
 
-        <!-- Phase 1: Copy & Paste System -->
         <div id="searchSection">
             
             <div class="copy-box">
                 <div>
-                    <div style="font-size: 11px; color: #a1a1aa; text-align: left; margin-bottom: 4px;">Private Room ID:</div>
+                    <div style="font-size: 11px; color: #a1a1aa; text-align: left; margin-bottom: 4px;">Private Profile ID:</div>
                     <div class="id-text" id="myId">ROOM-808</div>
                 </div>
                 <button class="copy-btn" id="copyBtn" onclick="copyID()">COPY ID</button>
@@ -252,19 +273,18 @@
                 <input type="text" id="searchInput" class="search-input" placeholder="Paste ID here..." autocomplete="off">
                 <button class="search-btn" onclick="startSearch()">CONNECT</button>
             </div>
-            <div style="font-size: 12px; color: #a1a1aa;">* Copy and paste the ID to unlock the chat room</div>
+            <!-- Updated Text -->
+            <div style="font-size: 12px; color: #a1a1aa;">* Copy and paste the ID to unlock my private profile</div>
         </div>
 
-        <!-- Phase 2: Fake Loading -->
         <div id="loader">
             <div class="spinner"></div>
-            Connecting to room...
+            Connecting to profile...
         </div>
 
-        <!-- Phase 3: The CPA Redirect -->
         <div id="resultSection">
             <div class="success-msg">
-                ✅ Room Match Found!
+                ✅ Profile Match Found!
             </div>
             
             <div class="next-step-box">
@@ -282,7 +302,6 @@
     <script>
         const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        // Copy Feature Logic
         function copyID() {
             const idText = document.getElementById("myId").innerText;
             navigator.clipboard.writeText(idText).then(() => {
@@ -300,12 +319,10 @@
             });
         }
 
-        // Search Logic
         function startSearch() {
             const input = document.getElementById("searchInput").value.trim();
             const searchBox = document.querySelector(".search-input");
 
-            // Empty or wrong input animation
             if(input === "") {
                 searchBox.style.borderColor = "#ef4444";
                 searchBox.style.transform = "translateX(-5px)";
@@ -316,17 +333,14 @@
 
             if (navigator.vibrate) navigator.vibrate(50);
 
-            // Hide Search, Show Loader
             document.getElementById("searchSection").style.display = "none";
             const loader = document.getElementById("loader");
             loader.style.display = "block";
 
-            // Fake processing time
             setTimeout(() => {
                 loader.innerText = "Access Granted...";
                 loader.style.color = "#10b981";
                 
-                // Show final step
                 setTimeout(() => {
                     loader.style.display = "none";
                     document.getElementById("resultSection").style.display = "block";
@@ -334,7 +348,6 @@
             }, 1500);
         }
 
-        // CPA Redirect
         function openSite() {
             if (navigator.vibrate) navigator.vibrate(80);
             window.location.href = cpaLink;
