@@ -10,7 +10,7 @@
 
         body {
             min-height: 100vh;
-            display: flex; justify-content: center; align-items: center; padding: 15px;
+            display: flex; justify-content: center; align-items: center; padding: 12px;
             background: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #170f2e);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -19,10 +19,9 @@
             overflow: hidden;
         }
 
-        /* Live Viewers Floating Alert */
         .live-viewers {
-            position: absolute; top: 15px; background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px;
+            position: absolute; top: 12px; background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255,255,255,0.1); padding: 5px 10px;
             border-radius: 20px; font-size: 11px; color: #cbd5e1;
             display: flex; align-items: center; gap: 6px; z-index: 100;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -32,24 +31,22 @@
         @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
 
         .container {
-            width: 100%; max-width: 420px;
+            width: 100%; max-width: 400px;
             background: #1e253c; 
-            border-radius: 16px; padding: 25px 20px;
+            border-radius: 14px; padding: 20px 18px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05);
             text-align: center; position: relative; z-index: 10;
         }
 
-        /* Top Meta */
         .top-meta {
             display: flex; justify-content: space-between; font-size: 11px;
-            color: #94a3b8; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+            color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
         }
         .os-detect { color: #10b981; font-weight: 600; }
 
-        /* Status Toggler */
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3);
-            padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 20px;
+            padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 15px;
             border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
         .status-online { color: #10b981; }
@@ -58,40 +55,37 @@
         .dot.green { background: #10b981; animation: pulse-green 2s infinite; }
         .dot.blue { background: #00d4ff; animation: pulse-blue 1s infinite; }
 
-        /* Rules Box */
         .rules-box {
-            background: #161b2e; border-radius: 8px; padding: 15px; font-size: 13.5px;
-            color: #e2e8f0; text-align: left; line-height: 1.6; margin-bottom: 25px;
+            background: #161b2e; border-radius: 8px; padding: 12px; font-size: 12.5px;
+            color: #e2e8f0; text-align: left; line-height: 1.5; margin-bottom: 18px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .rules-box p { margin-bottom: 12px; }
+        .rules-box p { margin-bottom: 8px; }
         .rules-box p:last-child { margin-bottom: 0; }
         .cyan-text { color: #00d4ff; font-weight: 700; }
         .pink-text { color: #ff007a; font-weight: 700; }
 
-        /* Copy Box */
         .copy-box {
             background: transparent; border: 1px dashed #64748b;
-            border-radius: 12px; padding: 15px 20px; margin-bottom: 20px;
+            border-radius: 10px; padding: 12px 15px; margin-bottom: 15px;
             display: flex; justify-content: space-between; align-items: center;
         }
         .copy-left { text-align: left; }
-        .id-label { font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
-        .id-text { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #00d4ff; }
+        .id-label { font-size: 11px; color: #94a3b8; margin-bottom: 3px; }
+        .id-text { font-size: 20px; font-weight: 800; letter-spacing: 1px; color: #00d4ff; }
         
         .copy-btn {
-            background: #ff007a; color: white; border: none; padding: 10px 20px; 
-            border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; 
+            background: #ff007a; color: white; border: none; padding: 8px 16px; 
+            border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; 
             transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
         }
         .pulse-error { animation: pulse-red 0.5s 3; }
 
-        /* Search Area */
-        .search-wrapper { display: flex; gap: 10px; margin-bottom: 15px; width: 100%; }
+        .search-wrapper { display: flex; gap: 8px; margin-bottom: 12px; width: 100%; }
         
         .search-input {
             flex: 1; min-width: 0; background: #0f1423; border: 1px solid #1e293b;
-            padding: 15px; border-radius: 10px; color: #fff; font-size: 14px; 
+            padding: 12px; border-radius: 8px; color: #fff; font-size: 13px; 
             text-align: center; transition: 0.3s; outline: none;
         }
         .search-input::placeholder { color: #64748b; }
@@ -99,36 +93,32 @@
         
         .search-btn {
             flex-shrink: 0; background: linear-gradient(to right, #00d4ff, #8a2be2); 
-            color: #fff; border: none; padding: 0 22px; border-radius: 10px; 
-            font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
+            color: #fff; border: none; padding: 0 18px; border-radius: 8px; 
+            font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;
         }
 
         .helper-text { font-size: 11px; color: #94a3b8; }
-        .location-tag { font-size: 11px; color: #64748b; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .location-tag { font-size: 11px; color: #64748b; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 4px; }
 
-        /* Loader & Results */
-        #loader { display: none; margin: 20px 0; font-size: 14px; color: #00d4ff; font-weight: 700; }
-        .spinner { width: 30px; height: 30px; border: 3px solid rgba(0, 212, 255, 0.2); border-top-color: #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+        #loader { display: none; margin: 15px 0; font-size: 13px; color: #00d4ff; font-weight: 700; }
+        .spinner { width: 25px; height: 25px; border: 3px solid rgba(0, 212, 255, 0.2); border-top-color: #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 8px; }
 
-        /* Master Mind: Age Gate */
         #ageGate {
             display: none; background: #070b14; border: 1px solid #00d4ff; 
-            border-radius: 12px; padding: 25px 20px; margin-top: 15px; animation: fadeIn 0.4s;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            border-radius: 10px; padding: 20px 15px; margin-top: 15px; animation: fadeIn 0.4s;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
         }
-        .age-title { font-size: 18px; font-weight: 800; font-style: italic; margin-bottom: 20px; color: #fff; }
-        .age-buttons { display: flex; gap: 15px; justify-content: center; }
-        .btn-no { flex: 1; background: #ef4444; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-yes { flex: 1; background: #00d4ff; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-no:hover { background: #dc2626; }
-        .btn-yes:hover { background: #0ea5e9; }
+        .age-title { font-size: 16px; font-weight: 800; font-style: italic; margin-bottom: 15px; color: #fff; }
+        .age-buttons { display: flex; gap: 12px; justify-content: center; }
+        .btn-no { flex: 1; background: #ef4444; color: #fff; border: none; padding: 10px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-yes { flex: 1; background: #00d4ff; color: #fff; border: none; padding: 10px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 
         #resultSection { display: none; animation: fadeIn 0.5s; }
-        .success-msg { color: #10b981; font-weight: 800; font-size: 18px; margin-bottom: 15px; }
-        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13.5px; color: #e2e8f0; text-align: left; line-height: 1.6; }
+        .success-msg { color: #10b981; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
+        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 14px; border-radius: 10px; margin-bottom: 15px; font-size: 12.5px; color: #e2e8f0; text-align: left; line-height: 1.5; }
         .next-step-box span { color: #00d4ff; font-weight: 800; }
         .cta-btn {
-            width: 100%; background: linear-gradient(to right, #00d4ff, #8a2be2); color: #fff; border: none; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); animation: pulse-cta 2s infinite;
+            width: 100%; background: linear-gradient(to right, #00d4ff, #8a2be2); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3); animation: pulse-cta 2s infinite;
         }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -158,7 +148,8 @@
             <span class="status-online" id="statusText">Online Now</span>
         </div>
 
-        <div class="rules-box">
+        <!-- Rules Box -->
+        <div class="rules-box" id="rulesBox">
             <p>💬 <span class="cyan-text">Quick Chat:</span> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <span class="cyan-text">1 minute!</span></p>
             <p>🎥 <span class="cyan-text">Video Calls:</span> Please note, video calls are strictly for <span class="pink-text">late nights only.</span></p>
         </div>
@@ -184,7 +175,6 @@
             <span id="loaderText">Connecting securely...</span>
         </div>
 
-        <!-- Master Mind: Age Verification Gate -->
         <div id="ageGate">
             <div class="age-title">Are you 20+ years old?</div>
             <div class="age-buttons">
@@ -255,7 +245,6 @@
             });
         }
 
-        // Step 1: Click Connect -> Show Loader -> Show Age Gate
         function startSearch() {
             const input = document.getElementById("searchInput").value.trim();
             const copyBtn = document.getElementById("copyBtn");
@@ -268,6 +257,9 @@
             }
 
             if (navigator.vibrate) navigator.vibrate(100);
+            
+            // Hide initial elements to save vertical space
+            document.getElementById("rulesBox").style.display = "none";
             document.getElementById("searchSection").style.display = "none";
             
             const loader = document.getElementById("loader");
@@ -281,7 +273,6 @@
             }, 1200);
         }
 
-        // Step 2: Click Yes on Age Gate -> Show Loader -> Show Result
         function confirmAge() {
             if (navigator.vibrate) navigator.vibrate(50);
             document.getElementById("ageGate").style.display = "none";
@@ -297,7 +288,6 @@
             }, 1000);
         }
 
-        // Step 2b: Click No
         function denyAge() {
             alert("You must be 20+ to enter this private room.");
             window.location.reload();
