@@ -4,303 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Private VIP Access 💋</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-        /* Vibrant Animated Background */
         body {
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            background: linear-gradient(-45deg, #ff007a, #7928ca, #00d4ff, #ff007a);
+            display: flex; justify-content: center; align-items: center; padding: 15px;
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #170f2e);
             background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
+            animation: gradientBG 15s ease infinite;
             color: #ffffff;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Glassmorphism Card */
-        .container {
-            width: 100%;
-            max-width: 420px;
-            background: rgba(15, 15, 20, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.05);
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        /* Protected Badge Area */
-        .badge-box {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Live Viewers Floating Alert */
+        .live-viewers {
+            position: absolute; top: 15px; background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px;
+            border-radius: 20px; font-size: 11px; color: #cbd5e1;
+            display: flex; align-items: center; gap: 6px; z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .pulse-eye { animation: blink 2s infinite; }
+
+        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+
+        .container {
+            width: 100%; max-width: 420px;
+            background: #1e253c; /* Matched from image */
+            border-radius: 16px; padding: 25px 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05);
+            text-align: center; position: relative; z-index: 10;
         }
 
-        .badge-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.5));
-            animation: float 3s ease-in-out infinite;
+        /* Top Meta */
+        .top-meta {
+            display: flex; justify-content: space-between; font-size: 11px;
+            color: #94a3b8; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
         }
+        .os-detect { color: #10b981; font-weight: 600; }
 
-        /* New VIP Design for Secure Gateway */
-        .title-box {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            padding: 6px 20px;
-            border-radius: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+        /* Status Toggler */
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3);
+            padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
+        .status-online { color: #10b981; }
+        .status-typing { color: #00d4ff; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .dot.green { background: #10b981; animation: pulse-green 2s infinite; }
+        .dot.blue { background: #00d4ff; animation: pulse-blue 1s infinite; }
 
-        .title-text {
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: #00d4ff;
-            text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
-        }
-
-        /* Rules Box */
+        /* Rules Box matching the image exactly */
         .rules-box {
-            background: rgba(0, 0, 0, 0.4);
-            border-left: 4px solid #00d4ff;
-            padding: 15px;
-            border-radius: 0 12px 12px 0;
-            font-size: 13.5px;
-            color: #e4e4e7;
-            text-align: left;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: #161b2e; border-radius: 8px; padding: 15px; font-size: 13.5px;
+            color: #e2e8f0; text-align: left; line-height: 1.6; margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .rules-box strong { color: #00d4ff; }
-        .rules-box .highlight { color: #ff007a; font-weight: 800; }
+        .rules-box p { margin-bottom: 12px; }
+        .rules-box p:last-child { margin-bottom: 0; }
+        .cyan-text { color: #00d4ff; font-weight: 700; }
+        .pink-text { color: #ff007a; font-weight: 700; }
 
-        /* Copy & Search Section */
-        #searchSection { transition: opacity 0.3s ease; }
-        
+        /* Copy Box matching the image */
         .copy-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px dashed rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: transparent; border: 1px dashed #64748b;
+            border-radius: 12px; padding: 15px 20px; margin-bottom: 20px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .id-text {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #00d4ff;
-        }
-
+        .copy-left { text-align: left; }
+        .id-label { font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
+        .id-text { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #00d4ff; }
+        
         .copy-btn {
-            background: #ff007a;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
-            white-space: nowrap; /* Button text won't break */
+            background: #ff007a; color: white; border: none; padding: 10px 20px; 
+            border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; 
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
         }
-        .copy-btn:active { transform: scale(0.9); }
+        .pulse-error { animation: pulse-red 0.5s 3; }
 
-        /* Fixed Button Overflow Issue Here */
-        .search-wrapper {
-            display: flex; 
-            gap: 8px; 
-            margin-bottom: 15px;
-            width: 100%; /* Ensure it stays inside */
-        }
+        /* Search Area */
+        .search-wrapper { display: flex; gap: 10px; margin-bottom: 15px; width: 100%; }
         
         .search-input {
-            flex: 1;
-            min-width: 0; /* Important fix for mobile overflow */
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 14px;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            text-align: center;
-            transition: 0.3s;
+            flex: 1; min-width: 0; background: #0f1423; border: 1px solid #1e293b;
+            padding: 15px; border-radius: 10px; color: #fff; font-size: 14px; 
+            text-align: center; transition: 0.3s; outline: none;
         }
-        .search-input:focus { border-color: #00d4ff; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        .search-input::placeholder { color: #64748b; }
+        .search-input:focus { border-color: #00d4ff; }
         
         .search-btn {
-            flex-shrink: 0; /* Prevents button from squishing too much */
-            background: linear-gradient(45deg, #00d4ff, #7928ca);
-            color: #fff;
-            border: none;
-            padding: 0 16px; /* Adjusted padding to fit perfectly */
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-            white-space: nowrap; /* Keeps text in one line */
-        }
-        .search-btn:active { transform: scale(0.95); }
-
-        /* Loader */
-        #loader {
-            display: none;
-            margin: 20px 0;
-            font-size: 14px;
-            color: #00d4ff;
-            font-weight: 700;
-        }
-        .spinner {
-            width: 30px; height: 30px;
-            border: 3px solid rgba(0, 212, 255, 0.2);
-            border-top-color: #00d4ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
+            flex-shrink: 0; background: linear-gradient(to right, #00d4ff, #8a2be2); 
+            color: #fff; border: none; padding: 0 22px; border-radius: 10px; 
+            font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
         }
 
-        /* Result Section */
+        .helper-text { font-size: 11px; color: #94a3b8; }
+
+        /* Location Fake */
+        .location-tag { font-size: 11px; color: #64748b; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+        /* Loader & Results */
+        #loader { display: none; margin: 20px 0; font-size: 14px; color: #00d4ff; font-weight: 700; }
+        .spinner { width: 30px; height: 30px; border: 3px solid rgba(0, 212, 255, 0.2); border-top-color: #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px; }
+
         #resultSection { display: none; animation: fadeIn 0.5s; }
-        
-        .success-msg {
-            color: #10b981; font-weight: 800; font-size: 18px; margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
-        }
-
-        .next-step-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #ff007a;
-            padding: 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #e4e4e7;
-            text-align: left;
-            line-height: 1.5;
-        }
-        .next-step-box span { color: #ff007a; font-weight: 800; }
-
+        .success-msg { color: #10b981; font-weight: 800; font-size: 18px; margin-bottom: 15px; }
+        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; color: #e2e8f0; text-align: left; line-height: 1.5; }
+        .next-step-box span { color: #00d4ff; font-weight: 800; }
         .cta-btn {
-            width: 100%;
-            background: linear-gradient(45deg, #ff007a, #ff6a00);
-            color: #fff;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(255, 0, 122, 0.5);
-            transition: 0.3s;
-            animation: pulse 2s infinite;
+            width: 100%; background: linear-gradient(to right, #00d4ff, #8a2be2); color: #fff; border: none; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); animation: pulse-cta 2s infinite;
         }
-        .cta-btn:hover { transform: translateY(-2px); }
-        .cta-btn:active { transform: scale(0.96); }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 122, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(255, 0, 122, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 122, 0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+        @keyframes pulse-blue { 0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(0, 212, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); } }
+        @keyframes pulse-red { 0% { transform: scale(1); background: #ff007a; } 50% { transform: scale(1.05); background: #ef4444; box-shadow: 0 0 15px #ef4444; } 100% { transform: scale(1); background: #ff007a; } }
+        @keyframes pulse-cta { 0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); } 100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); } }
     </style>
 </head>
 <body>
 
+    <!-- Trick 11: Live Viewer Count -->
+    <div class="live-viewers">
+        <span class="pulse-eye">👁️️</span> <span id="viewCount">3</span> people viewing
+    </div>
+
     <div class="container">
         
-        <div class="badge-box">
-            <!-- Apnar dewa image tag[cite: 3] -->
-            <img src="image_a066c6.png" alt="Secure Gateway" class="badge-img">
+        <div class="top-meta">
+            <div id="dateDisplay">Date</div>
+            <div class="os-detect" id="osDetect">Secure Connection</div>
         </div>
 
-        <!-- Premium Design for Title -->
-        <div class="title-box">
-            <div class="title-text">Secure Gateway</div>
+        <!-- Trick 13: Dynamic Status Toggler -->
+        <div class="status-badge" id="statusBadge">
+            <div class="dot green" id="statusDot"></div>
+            <span class="status-online" id="statusText">Online Now</span>
         </div>
 
+        <!-- Image Matched UI: Rules Box -->
         <div class="rules-box">
-            💬 <strong>Quick Chat:</strong> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <strong>1 minute!</strong><br><br>
-            🎥 <strong>Video Calls:</strong> Please note, video calls are strictly for <span class="highlight">late nights only.</span>
+            <p>💬 <span class="cyan-text">Quick Chat:</span> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <span class="cyan-text">1 minute!</span></p>
+            <p>🎥 <span class="cyan-text">Video Calls:</span> Please note, video calls are strictly for <span class="pink-text">late nights only.</span></p>
         </div>
 
         <div id="searchSection">
             
+            <!-- Image Matched UI: Copy Box -->
             <div class="copy-box">
-                <div>
-                    <div style="font-size: 11px; color: #a1a1aa; text-align: left; margin-bottom: 4px;">Private Profile ID:</div>
+                <div class="copy-left">
+                    <div class="id-label">Private Profile ID:</div>
                     <div class="id-text" id="myId">ROOM-808</div>
                 </div>
                 <button class="copy-btn" id="copyBtn" onclick="copyID()">COPY ID</button>
             </div>
             
+            <!-- Image Matched UI: Input & Connect -->
             <div class="search-wrapper">
                 <input type="text" id="searchInput" class="search-input" placeholder="Paste ID here..." autocomplete="off">
                 <button class="search-btn" onclick="startSearch()">CONNECT</button>
             </div>
-            <!-- Updated Text -->
-            <div style="font-size: 12px; color: #a1a1aa;">* Copy and paste the ID to unlock my private profile</div>
+            <div class="helper-text">* Copy and paste the ID to unlock my private profile</div>
         </div>
 
         <div id="loader">
             <div class="spinner"></div>
-            Connecting to profile...
+            Connecting securely...
         </div>
 
         <div id="resultSection">
-            <div class="success-msg">
-                ✅ Profile Match Found!
-            </div>
-            
+            <div class="success-msg">✅ Profile Matched!</div>
             <div class="next-step-box">
-                <strong>You're almost in! 🔥</strong><br><br>
-                Click the button below and create a quick free profile with <span>any random Name & Password</span> on the next page. Once completed, you will be redirected straight to my personal inbox, where you will also get the <span>video call option!</span>
+                <strong>Gateway Unlocked 🔓</strong><br><br>
+                Click below to enter the private chat room. You just need to create a quick <span>Free Profile</span> (Use any random name & password). After that, we can start our video call!
             </div>
+            <button class="cta-btn" onclick="openSite()">ENTER PRIVATE CHAT</button>
+        </div>
 
-            <button class="cta-btn" onclick="openSite()">
-                CREATE PROFILE & ENTER
-            </button>
+        <!-- Trick 14: Fake Location -->
+        <div class="location-tag">
+            📍 Secure connection: Matched user is ~3 miles away
         </div>
 
     </div>
 
     <script>
-        const cpaLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
+        const cpaLink = "https://track.aff.admedialeads.com/links?&pubid=9190&key=247974";
+
+        // Set Date
+        document.getElementById('dateDisplay').innerText = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        // Set OS Device text
+        const ua = navigator.userAgent;
+        if (/android/i.test(ua)) document.getElementById('osDetect').innerText = "Secured for Android";
+        else if (/iPad|iPhone|iPod/.test(ua)) document.getElementById('osDetect').innerText = "Secured for iPhone";
+
+        // Trick 11 Logic: Random Viewer Count Update
+        setInterval(() => {
+            const count = Math.floor(Math.random() * 4) + 2; // Random 2 to 5
+            document.getElementById('viewCount').innerText = count;
+        }, 8000);
+
+        // Trick 13 Logic: Toggle Online / Typing Status
+        setInterval(() => {
+            const statusText = document.getElementById('statusText');
+            const statusDot = document.getElementById('statusDot');
+            
+            if(statusText.innerText === "Online Now") {
+                statusText.innerText = "Typing...";
+                statusText.className = "status-typing";
+                statusDot.className = "dot blue";
+            } else {
+                statusText.innerText = "Online Now";
+                statusText.className = "status-online";
+                statusDot.className = "dot green";
+            }
+        }, 6000);
 
         function copyID() {
             const idText = document.getElementById("myId").innerText;
@@ -308,48 +234,47 @@
                 const copyBtn = document.getElementById("copyBtn");
                 copyBtn.innerText = "COPIED! ✔";
                 copyBtn.style.background = "#10b981"; 
-                copyBtn.style.boxShadow = "0 4px 15px rgba(16, 185, 129, 0.4)";
                 if (navigator.vibrate) navigator.vibrate(50);
                 
+                // Auto-fill Trick (if user clicks copy, automatically put it in the box to save time!)
+                document.getElementById('searchInput').value = idText;
+
                 setTimeout(() => {
                     copyBtn.innerText = "COPY ID";
                     copyBtn.style.background = "#ff007a";
-                    copyBtn.style.boxShadow = "0 4px 15px rgba(255, 0, 122, 0.4)";
-                }, 3000);
+                }, 2000);
             });
         }
 
         function startSearch() {
             const input = document.getElementById("searchInput").value.trim();
-            const searchBox = document.querySelector(".search-input");
+            const copyBtn = document.getElementById("copyBtn");
 
             if(input === "") {
-                searchBox.style.borderColor = "#ef4444";
-                searchBox.style.transform = "translateX(-5px)";
-                setTimeout(() => searchBox.style.transform = "translateX(5px)", 100);
-                setTimeout(() => searchBox.style.transform = "translateX(0)", 200);
+                // Trick 12: Smart Error Redirect (Pulsing the Copy Button)
+                if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
+                copyBtn.classList.add("pulse-error");
+                setTimeout(() => copyBtn.classList.remove("pulse-error"), 1500);
                 return;
             }
 
-            if (navigator.vibrate) navigator.vibrate(50);
-
+            if (navigator.vibrate) navigator.vibrate(100);
             document.getElementById("searchSection").style.display = "none";
+            
             const loader = document.getElementById("loader");
             loader.style.display = "block";
 
             setTimeout(() => {
-                loader.innerText = "Access Granted...";
-                loader.style.color = "#10b981";
-                
+                loader.innerText = "Verifying ID...";
                 setTimeout(() => {
                     loader.style.display = "none";
                     document.getElementById("resultSection").style.display = "block";
-                }, 1000);
-            }, 1500);
+                }, 1200);
+            }, 1000);
         }
 
         function openSite() {
-            if (navigator.vibrate) navigator.vibrate(80);
+            if (navigator.vibrate) navigator.vibrate(100);
             window.location.href = cpaLink;
         }
     </script>
