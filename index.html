@@ -33,7 +33,7 @@
 
         .container {
             width: 100%; max-width: 420px;
-            background: #1e253c; /* Matched from image */
+            background: #1e253c; 
             border-radius: 16px; padding: 25px 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05);
             text-align: center; position: relative; z-index: 10;
@@ -58,7 +58,7 @@
         .dot.green { background: #10b981; animation: pulse-green 2s infinite; }
         .dot.blue { background: #00d4ff; animation: pulse-blue 1s infinite; }
 
-        /* Rules Box matching the image exactly */
+        /* Rules Box */
         .rules-box {
             background: #161b2e; border-radius: 8px; padding: 15px; font-size: 13.5px;
             color: #e2e8f0; text-align: left; line-height: 1.6; margin-bottom: 25px;
@@ -69,7 +69,7 @@
         .cyan-text { color: #00d4ff; font-weight: 700; }
         .pink-text { color: #ff007a; font-weight: 700; }
 
-        /* Copy Box matching the image */
+        /* Copy Box */
         .copy-box {
             background: transparent; border: 1px dashed #64748b;
             border-radius: 12px; padding: 15px 20px; margin-bottom: 20px;
@@ -104,17 +104,28 @@
         }
 
         .helper-text { font-size: 11px; color: #94a3b8; }
-
-        /* Location Fake */
         .location-tag { font-size: 11px; color: #64748b; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
         /* Loader & Results */
         #loader { display: none; margin: 20px 0; font-size: 14px; color: #00d4ff; font-weight: 700; }
         .spinner { width: 30px; height: 30px; border: 3px solid rgba(0, 212, 255, 0.2); border-top-color: #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px; }
 
+        /* Master Mind: Age Gate */
+        #ageGate {
+            display: none; background: #070b14; border: 1px solid #00d4ff; 
+            border-radius: 12px; padding: 25px 20px; margin-top: 15px; animation: fadeIn 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        .age-title { font-size: 18px; font-weight: 800; font-style: italic; margin-bottom: 20px; color: #fff; }
+        .age-buttons { display: flex; gap: 15px; justify-content: center; }
+        .btn-no { flex: 1; background: #ef4444; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-yes { flex: 1; background: #00d4ff; color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-no:hover { background: #dc2626; }
+        .btn-yes:hover { background: #0ea5e9; }
+
         #resultSection { display: none; animation: fadeIn 0.5s; }
         .success-msg { color: #10b981; font-weight: 800; font-size: 18px; margin-bottom: 15px; }
-        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; color: #e2e8f0; text-align: left; line-height: 1.5; }
+        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 13.5px; color: #e2e8f0; text-align: left; line-height: 1.6; }
         .next-step-box span { color: #00d4ff; font-weight: 800; }
         .cta-btn {
             width: 100%; background: linear-gradient(to right, #00d4ff, #8a2be2); color: #fff; border: none; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); animation: pulse-cta 2s infinite;
@@ -131,9 +142,8 @@
 </head>
 <body>
 
-    <!-- Trick 11: Live Viewer Count -->
     <div class="live-viewers">
-        <span class="pulse-eye">👁️️</span> <span id="viewCount">3</span> people viewing
+        <span class="pulse-eye">👁</span> <span id="viewCount">3</span> people viewing
     </div>
 
     <div class="container">
@@ -143,21 +153,17 @@
             <div class="os-detect" id="osDetect">Secure Connection</div>
         </div>
 
-        <!-- Trick 13: Dynamic Status Toggler -->
         <div class="status-badge" id="statusBadge">
             <div class="dot green" id="statusDot"></div>
             <span class="status-online" id="statusText">Online Now</span>
         </div>
 
-        <!-- Image Matched UI: Rules Box -->
         <div class="rules-box">
             <p>💬 <span class="cyan-text">Quick Chat:</span> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <span class="cyan-text">1 minute!</span></p>
             <p>🎥 <span class="cyan-text">Video Calls:</span> Please note, video calls are strictly for <span class="pink-text">late nights only.</span></p>
         </div>
 
         <div id="searchSection">
-            
-            <!-- Image Matched UI: Copy Box -->
             <div class="copy-box">
                 <div class="copy-left">
                     <div class="id-label">Private Profile ID:</div>
@@ -166,7 +172,6 @@
                 <button class="copy-btn" id="copyBtn" onclick="copyID()">COPY ID</button>
             </div>
             
-            <!-- Image Matched UI: Input & Connect -->
             <div class="search-wrapper">
                 <input type="text" id="searchInput" class="search-input" placeholder="Paste ID here..." autocomplete="off">
                 <button class="search-btn" onclick="startSearch()">CONNECT</button>
@@ -176,19 +181,28 @@
 
         <div id="loader">
             <div class="spinner"></div>
-            Connecting securely...
+            <span id="loaderText">Connecting securely...</span>
+        </div>
+
+        <!-- Master Mind: Age Verification Gate -->
+        <div id="ageGate">
+            <div class="age-title">Are you 20+ years old?</div>
+            <div class="age-buttons">
+                <button class="btn-no" onclick="denyAge()">No</button>
+                <button class="btn-yes" onclick="confirmAge()">Yes</button>
+            </div>
         </div>
 
         <div id="resultSection">
-            <div class="success-msg">✅ Profile Matched!</div>
+            <div class="success-msg">✅ Profile Matched & Verified!</div>
             <div class="next-step-box">
                 <strong>Gateway Unlocked 🔓</strong><br><br>
-                Click below to enter the private chat room. You just need to create a quick <span>Free Profile</span> (Use any random name & password). After that, we can start our video call!
+                Click below to enter the private chat room. You just need to create a quick <span>Free Profile</span> (Use any random name & password). After that, we can do <span>whatever you want!</span> 🔥<br><br>
+                Message me right now so we can start, but please keep in mind that <span>late nights are the best</span> for our private video calls!
             </div>
             <button class="cta-btn" onclick="openSite()">ENTER PRIVATE CHAT</button>
         </div>
 
-        <!-- Trick 14: Fake Location -->
         <div class="location-tag">
             📍 Secure connection: Matched user is ~3 miles away
         </div>
@@ -198,21 +212,17 @@
     <script>
         const cpaLink = "https://track.aff.admedialeads.com/links?&pubid=9190&key=247974";
 
-        // Set Date
         document.getElementById('dateDisplay').innerText = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-        // Set OS Device text
         const ua = navigator.userAgent;
         if (/android/i.test(ua)) document.getElementById('osDetect').innerText = "Secured for Android";
         else if (/iPad|iPhone|iPod/.test(ua)) document.getElementById('osDetect').innerText = "Secured for iPhone";
 
-        // Trick 11 Logic: Random Viewer Count Update
         setInterval(() => {
-            const count = Math.floor(Math.random() * 4) + 2; // Random 2 to 5
+            const count = Math.floor(Math.random() * 4) + 2; 
             document.getElementById('viewCount').innerText = count;
         }, 8000);
 
-        // Trick 13 Logic: Toggle Online / Typing Status
         setInterval(() => {
             const statusText = document.getElementById('statusText');
             const statusDot = document.getElementById('statusDot');
@@ -236,7 +246,6 @@
                 copyBtn.style.background = "#10b981"; 
                 if (navigator.vibrate) navigator.vibrate(50);
                 
-                // Auto-fill Trick (if user clicks copy, automatically put it in the box to save time!)
                 document.getElementById('searchInput').value = idText;
 
                 setTimeout(() => {
@@ -246,12 +255,12 @@
             });
         }
 
+        // Step 1: Click Connect -> Show Loader -> Show Age Gate
         function startSearch() {
             const input = document.getElementById("searchInput").value.trim();
             const copyBtn = document.getElementById("copyBtn");
 
             if(input === "") {
-                // Trick 12: Smart Error Redirect (Pulsing the Copy Button)
                 if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
                 copyBtn.classList.add("pulse-error");
                 setTimeout(() => copyBtn.classList.remove("pulse-error"), 1500);
@@ -262,15 +271,36 @@
             document.getElementById("searchSection").style.display = "none";
             
             const loader = document.getElementById("loader");
+            const loaderText = document.getElementById("loaderText");
             loader.style.display = "block";
+            loaderText.innerText = "Connecting securely...";
 
             setTimeout(() => {
-                loader.innerText = "Verifying ID...";
-                setTimeout(() => {
-                    loader.style.display = "none";
-                    document.getElementById("resultSection").style.display = "block";
-                }, 1200);
+                loader.style.display = "none";
+                document.getElementById("ageGate").style.display = "block";
+            }, 1200);
+        }
+
+        // Step 2: Click Yes on Age Gate -> Show Loader -> Show Result
+        function confirmAge() {
+            if (navigator.vibrate) navigator.vibrate(50);
+            document.getElementById("ageGate").style.display = "none";
+            
+            const loader = document.getElementById("loader");
+            const loaderText = document.getElementById("loaderText");
+            loader.style.display = "block";
+            loaderText.innerText = "Verifying Age...";
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                document.getElementById("resultSection").style.display = "block";
             }, 1000);
+        }
+
+        // Step 2b: Click No
+        function denyAge() {
+            alert("You must be 20+ to enter this private room.");
+            window.location.reload();
         }
 
         function openSite() {
