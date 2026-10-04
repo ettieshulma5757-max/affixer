@@ -2,300 +2,233 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Private VIP Access 💋</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Video Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
         body {
-            min-height: 100vh;
-            display: flex; justify-content: center; align-items: center; padding: 12px;
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #020617, #170f2e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-color: #0d111c;
             color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             position: relative;
-            overflow: hidden;
         }
 
-        .live-viewers {
-            position: absolute; top: 12px; background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255,255,255,0.1); padding: 5px 10px;
-            border-radius: 20px; font-size: 11px; color: #cbd5e1;
-            display: flex; align-items: center; gap: 6px; z-index: 100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .pulse-eye { animation: blink 2s infinite; }
-
-        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
-
-        .container {
-            width: 100%; max-width: 400px;
-            background: #1e253c; 
-            border-radius: 14px; padding: 20px 18px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.05);
-            text-align: center; position: relative; z-index: 10;
+        .viewers-badge {
+            position: absolute;
+            top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .top-meta {
-            display: flex; justify-content: space-between; font-size: 11px;
-            color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        .card {
+            background-color: #1e2436;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        .os-detect { color: #10b981; font-weight: 600; }
 
-        .status-badge {
-            display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.3);
-            padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 15px;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
-        .status-online { color: #10b981; }
-        .status-typing { color: #00d4ff; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .dot.green { background: #10b981; animation: pulse-green 2s infinite; }
-        .dot.blue { background: #00d4ff; animation: pulse-blue 1s infinite; }
+        .date-text { color: #94a3b8; }
+        .secure-text { color: #10b981; }
 
-        .rules-box {
-            background: #161b2e; border-radius: 8px; padding: 12px; font-size: 12.5px;
-            color: #e2e8f0; text-align: left; line-height: 1.5; margin-bottom: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .typing-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
         }
-        .rules-box p { margin-bottom: 8px; }
-        .rules-box p:last-child { margin-bottom: 0; }
-        .cyan-text { color: #00d4ff; font-weight: 700; }
-        .pink-text { color: #ff007a; font-weight: 700; }
+        .typing-badge {
+            background: #0d111c;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00d4ff;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
 
-        .copy-box {
-            background: transparent; border: 1px dashed #64748b;
-            border-radius: 10px; padding: 12px 15px; margin-bottom: 15px;
-            display: flex; justify-content: space-between; align-items: center;
+        .action-box {
+            background-color: #0d111c;
+            border: 2px solid #00d4ff;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+            animation: fadeIn 0.5s ease-in;
         }
-        .copy-left { text-align: left; }
-        .id-label { font-size: 11px; color: #94a3b8; margin-bottom: 3px; }
-        .id-text { font-size: 20px; font-weight: 800; letter-spacing: 1px; color: #00d4ff; }
+
+        .system-alert {
+            font-size: 12px;
+            color: #10b981;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .trick-text {
+            font-size: 14px;
+            color: #e2e8f0;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .trick-text span {
+            color: #00d4ff;
+            font-weight: 700;
+        }
         
-        .copy-btn {
-            background: #ff007a; color: white; border: none; padding: 8px 16px; 
-            border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; 
-            transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
+        .btn-full {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #00d4ff;
+            color: #0d111c;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            animation: pulse-cyan 2s infinite;
         }
-        .pulse-error { animation: pulse-red 0.5s 3; }
-
-        .search-wrapper { display: flex; gap: 8px; margin-bottom: 12px; width: 100%; }
-        
-        .search-input {
-            flex: 1; min-width: 0; background: #0f1423; border: 1px solid #1e293b;
-            padding: 12px; border-radius: 8px; color: #fff; font-size: 13px; 
-            text-align: center; transition: 0.3s; outline: none;
-        }
-        .search-input::placeholder { color: #64748b; }
-        .search-input:focus { border-color: #00d4ff; }
-        
-        .search-btn {
-            flex-shrink: 0; background: linear-gradient(to right, #00d4ff, #8a2be2); 
-            color: #fff; border: none; padding: 0 18px; border-radius: 8px; 
-            font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s;
+        .btn-full:hover {
+            background-color: #00b8e6;
         }
 
-        .helper-text { font-size: 11px; color: #94a3b8; }
-        .location-tag { font-size: 11px; color: #64748b; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 4px; }
-
-        #loader { display: none; margin: 15px 0; font-size: 13px; color: #00d4ff; font-weight: 700; }
-        .spinner { width: 25px; height: 25px; border: 3px solid rgba(0, 212, 255, 0.2); border-top-color: #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 8px; }
-
-        #ageGate {
-            display: none; background: #070b14; border: 1px solid #00d4ff; 
-            border-radius: 10px; padding: 20px 15px; margin-top: 15px; animation: fadeIn 0.4s;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15);
+        .location-footer {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 20px;
         }
-        .age-title { font-size: 16px; font-weight: 800; font-style: italic; margin-bottom: 15px; color: #fff; }
-        .age-buttons { display: flex; gap: 12px; justify-content: center; }
-        .btn-no { flex: 1; background: #ef4444; color: #fff; border: none; padding: 10px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-yes { flex: 1; background: #00d4ff; color: #fff; border: none; padding: 10px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .pin { color: #f43f5e; }
 
-        #resultSection { display: none; animation: fadeIn 0.5s; }
-        .success-msg { color: #10b981; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
-        .next-step-box { background: rgba(0, 0, 0, 0.3); border: 1px solid #00d4ff; padding: 14px; border-radius: 10px; margin-bottom: 15px; font-size: 12.5px; color: #e2e8f0; text-align: left; line-height: 1.5; }
-        .next-step-box span { color: #00d4ff; font-weight: 800; }
-        .cta-btn {
-            width: 100%; background: linear-gradient(to right, #00d4ff, #8a2be2); color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3); animation: pulse-cta 2s infinite;
+        .netlify-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #111827;
+            border: 1px solid #374151;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
+        .netlify-badge strong { color: #fff; }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        @keyframes pulse-blue { 0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); } 70% { box-shadow: 0 0 0 6px rgba(0, 212, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); } }
-        @keyframes pulse-red { 0% { transform: scale(1); background: #ff007a; } 50% { transform: scale(1.05); background: #ef4444; box-shadow: 0 0 15px #ef4444; } 100% { transform: scale(1); background: #ff007a; } }
-        @keyframes pulse-cta { 0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); } 100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); } }
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pulse-cyan {
+            0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="live-viewers">
-        <span class="pulse-eye">👁</span> <span id="viewCount">3</span> people viewing
+    <div class="viewers-badge">
+        👁 <span id="viewers">3</span> people viewing
     </div>
 
-    <div class="container">
-        
-        <div class="top-meta">
-            <div id="dateDisplay">Date</div>
-            <div class="os-detect" id="osDetect">Secure Connection</div>
+    <div class="card">
+        <div class="card-header">
+            <span class="date-text" id="currentDate">OCT 5</span>
+            <span class="secure-text">SECURE CONNECTION</span>
         </div>
 
-        <div class="status-badge" id="statusBadge">
-            <div class="dot green" id="statusDot"></div>
-            <span class="status-online" id="statusText">Online Now</span>
-        </div>
-
-        <!-- Rules Box -->
-        <div class="rules-box" id="rulesBox">
-            <p>💬 <span class="cyan-text">Quick Chat:</span> If you want to talk, send a message now. My phone is in my hand, and unless it's an emergency, I always reply within <span class="cyan-text">1 minute!</span></p>
-            <p>🎥 <span class="cyan-text">Video Calls:</span> Please note, video calls are strictly for <span class="pink-text">late nights only.</span></p>
-        </div>
-
-        <div id="searchSection">
-            <div class="copy-box">
-                <div class="copy-left">
-                    <div class="id-label">Private Profile ID:</div>
-                    <div class="id-text" id="myId">ROOM-808</div>
-                </div>
-                <button class="copy-btn" id="copyBtn" onclick="copyID()">COPY ID</button>
-            </div>
-            
-            <div class="search-wrapper">
-                <input type="text" id="searchInput" class="search-input" placeholder="Paste ID here..." autocomplete="off">
-                <button class="search-btn" onclick="startSearch()">CONNECT</button>
-            </div>
-            <div class="helper-text">* Copy and paste the ID to unlock my private profile</div>
-        </div>
-
-        <div id="loader">
-            <div class="spinner"></div>
-            <span id="loaderText">Connecting securely...</span>
-        </div>
-
-        <div id="ageGate">
-            <div class="age-title">Are you 20+ years old?</div>
-            <div class="age-buttons">
-                <button class="btn-no" onclick="denyAge()">No</button>
-                <button class="btn-yes" onclick="confirmAge()">Yes</button>
+        <div class="typing-box">
+            <div class="typing-badge">
+                <div class="dot"></div> Typing...
             </div>
         </div>
 
-        <div id="resultSection">
-            <div class="success-msg">✅ Profile Matched & Verified!</div>
-            <div class="next-step-box">
-                <strong>Gateway Unlocked 🔓</strong><br><br>
-                Click below to enter the private chat room. You just need to create a quick <span>Free Profile</span> (Use any random name & password). After that, we can do <span>whatever you want!</span> 🔥<br><br>
-                Message me right now so we can start, but please keep in mind that <span>late nights are the best</span> for our private video calls!
+        <div class="action-box">
+            <div class="system-alert">
+                <span>🟢</span> User is ready to connect
             </div>
-            <button class="cta-btn" onclick="openSite()">ENTER PRIVATE CHAT</button>
+            <div class="trick-text">
+                Want to text or jump on a <span>live video call?</span> (Video is highly recommended for the best experience! 🔥)<br><br>
+                Just click the button below and enter any random <span>Username & Password</span> to create your free profile. <br><br>
+                Once done, our private message and video call will <span>auto-connect instantly!</span>
+            </div>
+            <button class="btn-full" onclick="goToOffer()">AUTO-CONNECT NOW</button>
         </div>
 
-        <div class="location-tag">
-            📍 Secure connection: Matched user is ~3 miles away
+        <div class="location-footer">
+            <span class="pin">📍</span> Secure connection: Matched user is ~3 miles away
         </div>
+    </div>
 
+    <div class="netlify-badge">
+        ❇ Powered by <strong>Netlify</strong>
     </div>
 
     <script>
-        const cpaLink = "https://track.aff.admedialeads.com/links?&pubid=9190&key=247974";
+        // Updated CPA Link
+        const offerLink = "https://trk.mitegirl.store/s/GQC8JWJDS7?p=123";
 
-        document.getElementById('dateDisplay').innerText = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        // Dynamic Date
+        const dateOptions = { month: 'short', day: 'numeric' };
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', dateOptions).toUpperCase();
 
-        const ua = navigator.userAgent;
-        if (/android/i.test(ua)) document.getElementById('osDetect').innerText = "Secured for Android";
-        else if (/iPad|iPhone|iPod/.test(ua)) document.getElementById('osDetect').innerText = "Secured for iPhone";
-
+        // Random Viewer Count
         setInterval(() => {
-            const count = Math.floor(Math.random() * 4) + 2; 
-            document.getElementById('viewCount').innerText = count;
-        }, 8000);
+            document.getElementById('viewers').innerText = Math.floor(Math.random() * 5) + 2;
+        }, 5000);
 
-        setInterval(() => {
-            const statusText = document.getElementById('statusText');
-            const statusDot = document.getElementById('statusDot');
-            
-            if(statusText.innerText === "Online Now") {
-                statusText.innerText = "Typing...";
-                statusText.className = "status-typing";
-                statusDot.className = "dot blue";
-            } else {
-                statusText.innerText = "Online Now";
-                statusText.className = "status-online";
-                statusDot.className = "dot green";
-            }
-        }, 6000);
-
-        function copyID() {
-            const idText = document.getElementById("myId").innerText;
-            navigator.clipboard.writeText(idText).then(() => {
-                const copyBtn = document.getElementById("copyBtn");
-                copyBtn.innerText = "COPIED! ✔";
-                copyBtn.style.background = "#10b981"; 
-                if (navigator.vibrate) navigator.vibrate(50);
-                
-                document.getElementById('searchInput').value = idText;
-
-                setTimeout(() => {
-                    copyBtn.innerText = "COPY ID";
-                    copyBtn.style.background = "#ff007a";
-                }, 2000);
-            });
-        }
-
-        function startSearch() {
-            const input = document.getElementById("searchInput").value.trim();
-            const copyBtn = document.getElementById("copyBtn");
-
-            if(input === "") {
-                if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
-                copyBtn.classList.add("pulse-error");
-                setTimeout(() => copyBtn.classList.remove("pulse-error"), 1500);
-                return;
-            }
-
-            if (navigator.vibrate) navigator.vibrate(100);
-            
-            // Hide initial elements to save vertical space
-            document.getElementById("rulesBox").style.display = "none";
-            document.getElementById("searchSection").style.display = "none";
-            
-            const loader = document.getElementById("loader");
-            const loaderText = document.getElementById("loaderText");
-            loader.style.display = "block";
-            loaderText.innerText = "Connecting securely...";
-
-            setTimeout(() => {
-                loader.style.display = "none";
-                document.getElementById("ageGate").style.display = "block";
-            }, 1200);
-        }
-
-        function confirmAge() {
-            if (navigator.vibrate) navigator.vibrate(50);
-            document.getElementById("ageGate").style.display = "none";
-            
-            const loader = document.getElementById("loader");
-            const loaderText = document.getElementById("loaderText");
-            loader.style.display = "block";
-            loaderText.innerText = "Verifying Age...";
-
-            setTimeout(() => {
-                loader.style.display = "none";
-                document.getElementById("resultSection").style.display = "block";
-            }, 1000);
-        }
-
-        function denyAge() {
-            alert("You must be 20+ to enter this private room.");
-            window.location.reload();
-        }
-
-        function openSite() {
-            if (navigator.vibrate) navigator.vibrate(100);
-            window.location.href = cpaLink;
+        // Redirect function
+        function goToOffer() {
+            window.location.href = offerLink;
         }
     </script>
 </body>
